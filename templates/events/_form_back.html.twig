@@ -1,0 +1,46 @@
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>{{ form_label(form.eventname, "Event Name") }}</td>
+        <td>{{ form_widget(form.eventname) }}</td>
+        <td>{{ form_errors(form.eventname) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.nbrmaxpart, "Maximum Participants") }}</td>
+        <td>{{ form_widget(form.nbrmaxpart) }}</td>
+        <td>{{ form_errors(form.nbrmaxpart) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.imageevent, "Event Image") }}</td>
+        <td>{{ form_widget(form.imageevent) }}</td>
+        <td>{{ form_errors(form.imageevent) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.description, "Description") }}</td>
+        <td>{{ form_widget(form.description) }}</td>
+        <td>{{ form_errors(form.description) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.eventdate, "Event Date") }}</td>
+        <td>{{ form_widget(form.eventdate) }}</td>
+        <td>{{ form_errors(form.eventdate) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.eventaddress, "Event Address") }}</td>
+        <td>{{ form_widget(form.eventaddress) }}</td>
+        <td>{{ form_errors(form.eventaddress) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.eventtheme, "Event Theme") }}</td>
+        <td>{{ form_widget(form.eventtheme) }}</td>
+        <td>{{ form_errors(form.eventtheme) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.org, "Event Organizer") }}</td>
+        <td>{{ form_widget(form.org) }}</td>
+        <td>{{ form_errors(form.org) }}</td>
+    </tr>
+</table>
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

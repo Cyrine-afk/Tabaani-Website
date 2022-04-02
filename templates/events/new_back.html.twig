@@ -1,0 +1,28 @@
+{% extends'Back_Office/AdminMain.html.twig' %}
+
+ {% block title %}
+     Add Event
+ {% endblock %}
+
+
+    {% block Entry %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card card-custom gutter-b example example-compact">
+                        <div class="card-header">
+                            <h3 class="card-title">Add an event</h3>
+                        </div>
+
+                        <div class="card-body">
+                            {{ include('events/_form_back.html.twig') }}
+
+                            <a href="{{ path('events_index_back') }}">back to list</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends'Back_Office/AdminMain.html.twig' %}
+
+ {% block title %}
+     Edit Event
+ {% endblock %}
+
+
+    {% block Entry %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit an event</h3>
+                    </div>
+
+                        <div class="card-body">
+                            {{ include('events/_form_back.html.twig', {'button_label': 'Update'}) }}
+
+                            <a href="{{ path('events_index_back') }}">back to list</a>
+
+                            {{ include('events/_delete_form.html.twig') }}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

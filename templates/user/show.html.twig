@@ -1,0 +1,180 @@
+{% extends'Front_Office/Header-Footer.html.twig' %}
+
+ {% block title %}
+     User Profile
+ {% endblock %}
+
+
+    {% block Content %}
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 mr-lg-auto">
+                        <div class="card border-0 shadow mb-6 mb-lg-0">
+                            <div class="card-header bg-gray-100 py-4 border-0 text-center"><a class="d-inline-block" href="#"><img class="d-block avatar avatar-xxl p-2 mb-2" src="{{ asset('pics/avatar-10.jpg') }}" alt=""></a>
+                                <h5>{{ user.prenomUser }} {{ user.nomUser }}</h5>
+                                <p class="text-muted text-sm mb-0">{{ user.loginUser }}  </p>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="media align-items-center mb-3">
+                                    <div class="icon-rounded icon-rounded-sm bg-primary-light mr-2">
+                                        <svg class="svg-icon text-primary svg-icon-md">
+                                            <use xlink:href="#diploma-1"> </use>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="mb-0">2877 reviews</p>
+                                    </div>
+                                </div>
+                                <div class="media align-items-center mb-3">
+                                    <div class="icon-rounded icon-rounded-sm bg-primary-light mr-2">
+                                        <svg class="svg-icon text-primary svg-icon-md">
+                                            <use xlink:href="#checkmark-1"> </use>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="mb-0">Verified</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h6>Jack provided</h6>
+                                <ul class="card-text text-muted">
+                                    <li>Government ID</li>
+                                    <li>Email address</li>
+                                    <li>Phone number</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 pl-lg-5">
+                        <h1 class="hero-heading mb-0">Hello, I'm {{ user.prenomUser }}!</h1>
+                        <div class="text-block">
+                            <p> <span class="badge badge-secondary-light">Birthday: {{ user.dateNaiss ? user.dateNaiss|date('Y-m-d') : '' }}</span></p>
+                            <p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.  </p>
+                            <p class="text-muted">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.  </p>
+                        </div>
+                        <div class="text-block">
+
+                            <div class="row mb-5">
+
+                                <div class="col-md-8">
+                                    <p class="subtitle text-primary">The latest events</p>
+                                    <h3>Events Hosted By {{ user.prenomUser }}</h3>
+                                </div>
+                                <div class="text-center">
+                                    <a class="btn btn-outline-primary btn-block" href="{{ path('events_new') }}">
+                                        <i class="far fa-paper-plane mr-2"></i>
+                                        Add a new event
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- place item-->
+                                {% for event in user.events %}
+                                <div class="col-sm-6 col-lg-4 mb-30px hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
+                                    <div class="card h-100 border-0 shadow">
+
+                                        <!-- user smol details in icon -->
+                                        <div class="card-img-top overflow-hidden gradient-overlay">
+                                            <img class="img-fluid" src="{{ asset('uploads/' ~ event.imageevent) }}" alt="Modern, Well-Appointed Room"/>
+                                            <a class="tile-link" href="{{ path('events_show', {'id': event.id}) }}"></a>
+                                            <!-- user smol name icon -->
+                                            <div class="card-img-overlay-bottom z-index-20">
+                                                <div class="media text-white text-sm align-items-center"><img class="avatar avatar-border-white mr-2" src="{{ asset('pics/avatar-10.jpg') }}" alt="event" />
+                                                    <div class="media-body">{{ user.prenomUser }}</div>
+                                                </div>
+                                            </div>
+                                            <!-- user smol pic icon -->
+                                            <div class="card-img-overlay-top text-right"><a class="card-fav-icon position-relative z-index-40" href="javascript: void();">
+                                                    <svg class="svg-icon text-white">
+                                                        <use xlink:href="#heart-1"> </use>
+                                                    </svg></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- user events details -->
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="w-100">
+                                                <h4 class="card-title">
+                                                    <a class="text-decoration-none text-primary " >{{ event.eventname }}</a>
+                                                </h4>
+                                                <div class="d-flex card-subtitle mb-3">
+                                                    <p class="flex-grow-1 mb-0 text-muted text-sm">{{ event.eventaddress }}</p>
+                                                    <!--<p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <i class="fa fa-star text-warning"></i>
+                                                    </p>-->
+                                                </div>
+
+                                                <!-- edit & delete buttons -->
+                                                <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"><a class="btn btn-primary" href="{{ path('events_edit', {'id': event.id}) }}">Edit</a></li>
+                                                <br>
+                                                {{ include('events/_delete_form.html.twig') }}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    {# <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>NomUser</th>
+                <td>{{ user.nomUser }}</td>
+            </tr>
+            <tr>
+                <th>PrenomUser</th>
+                <td>{{ user.prenomUser }}</td>
+            </tr>
+            <tr>
+                <th>DateNaiss</th>
+                <td>{{ user.dateNaiss ? user.dateNaiss|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EmailUser</th>
+                <td>{{ user.emailUser }}</td>
+            </tr>
+            <tr>
+                <th>LoginUser</th>
+                <td>{{ user.loginUser }}</td>
+            </tr>
+            <tr>
+                <th>MdpUser</th>
+                <td>{{ user.mdpUser }}</td>
+            </tr>
+            <tr>
+                <th>NumUser</th>
+                <td>{{ user.numUser }}</td>
+            </tr>
+            <tr>
+                <th>ImageUser</th>
+                <td>{{ user.imageUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">back to list</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}  #}
+{% endblock %}

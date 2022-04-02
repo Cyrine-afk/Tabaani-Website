@@ -1,0 +1,114 @@
+{% extends'Front_Office/Header-Footer.html.twig' %}
+
+ {% block title %}
+     Event Details
+ {% endblock %}
+
+
+    {% block Content %}
+        <section class="pt-7 pb-5 d-flex align-items-end dark-overlay bg-cover" style="background-image: url('{{ asset('pics/restaurant-1515164783716-8e6920f3e77c.jpg') }}');">
+            <div class="container overlay-content">
+                <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-items-lg-end">
+                    <div class="text-white mb-4 mb-lg-0">
+                        <div class="badge badge-transparent badge-pill px-3 py-2 mb-4">
+                            {{ event.eventtheme }}
+                        </div>
+                        <p class="mb-2 ">
+                            <time class="badge badge-primary-light" datetime="2022-02-17T16:00:00Z[UTC]" title="Thu Feb 17 2022 16:00:00 GMT+0000 (Coordinated Universal Time)">
+                                <span> {{ event.eventdate ? event.eventdate|date('Y-m-d') : '' }} </span>
+                            </time>
+                        </p>
+                        <h1 class="text-shadow verified">{{ event.eventname }}</h1>
+                        <p><i class="fa-map-marker-alt fas mr-2"></i> {{ event.eventaddress }}</p>
+                        <p class="mb-0 d-flex align-items-center">
+                            Hosted By :
+                        <div >
+                            <img class="avatar avatar-border-white mr-2" src="{{ asset('pics/avatar-10.jpg') }}" alt="John"/>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="calltoactions"><a class="btn btn-primary" href="#leaveReview" onclick="$('#leaveReview').collapse('show')" data-smooth-scroll>Participate</a></div>
+                </div>
+            </div>
+        </section>
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- About Listing-->
+                        <div class="text-block">
+                            <h3 class="mb-3">About</h3>
+                            <p class="text-muted"> {{ event.description }} </p>
+                        </div>
+
+                        <div class="text-block">
+                            <!-- Gallery-->
+                            <h3 class="mb-4">Gallery</h3>
+                            <div class="row gallery ml-n1 mr-n1">
+                                <div class="col-lg-4 col-6 px-1 mb-2"><a href="{{ asset('pics/restaurant-1515164783716-8e6920f3e77c.jpg') }}">
+                                        <img class="img-fluid" src="{{ asset('pics/restaurant-1515164783716-8e6920f3e77c.jpg') }}" alt="..."></a>
+                                </div>
+                                <div class="col-lg-4 col-6 px-1 mb-2"><a href="{{ asset('pics/restaurant-1466978913421-dad2ebd01d17.jpg') }}">
+                                        <img class="img-fluid" src="{{ asset('pics/restaurant-1466978913421-dad2ebd01d17.jpg') }}" alt="..."></a>
+                                </div>
+                                <div class="col-lg-4 col-6 px-1 mb-2"><a href="{{ asset('pics/restaurant-1477763858572-cda7deaa9bc5.jpg') }}">
+                                        <img class="img-fluid" src="{{ asset('pics/restaurant-1477763858572-cda7deaa9bc5.jpg') }}" alt="..."></a>
+                                </div>
+                                <div class="col-lg-4 col-6 px-1 mb-2"><a href="{{ asset('pics/restaurant-1505275350441-83dcda8eeef5.jpg') }}">
+                                        <img class="img-fluid" src="{{ asset('pics/restaurant-1505275350441-83dcda8eeef5.jpg') }}" alt="..."></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="pl-xl-4">
+                            <div class="card border-0 shadow mb-5">
+                                <div class="card-header bg-gray-100 py-4 border-0">
+                                    <div class="media align-items-center">
+                                        <div class="media-body">
+                                            <p class="subtitle text-sm text-primary">About the organizer</p>
+                                            <h4 class="mb-0">Contact</h4>
+                                        </div>
+                                        <svg class="svg-icon svg-icon svg-icon-light w-3rem h-3rem ml-3 text-muted">
+                                            <use xlink:href="#fountain-pen-1"> </use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li class="mb-2"> <a class="text-gray-00 text-sm text-decoration-none" href="#"><i class="fa fa-phone mr-3"></i><span class="text-muted">(020) 123 456 789</span></a></li>
+                                        <li class="mb-2"> <a class=" text-sm text-decoration-none" href="#"><i class="fa fa-envelope mr-3"></i><span class="text-muted">info@example.com</span></a></li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <a class="btn btn-outline-primary btn-block" href="#">
+                                            <i class="far fa-paper-plane mr-2"></i>
+                                            Boost User
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a class="btn btn-outline-primary btn-block" href="{{ path('events_index') }}">
+                                <i class="far fa-paper-plane mr-2"></i>
+                                Back to events list
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+    <a href="{{ path('events_index') }}">Back to events list</a>
+
+    <a href="{{ path('events_edit', {'id': event.id}) }}">Edit</a>
+
+    {{ include('events/_delete_form.html.twig') }}
+{% endblock %}

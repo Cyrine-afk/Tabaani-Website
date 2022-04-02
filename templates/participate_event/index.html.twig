@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ParticipateEvent index{% endblock %}
+
+{% block body %}
+    <h1>ParticipateEvent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participate_event in participate_events %}
+            <tr>
+                <td>{{ participate_event.id }}</td>
+                <td>
+                    <a href="{{ path('participate_event_show', {'id': participate_event.id}) }}">show</a>
+                    <a href="{{ path('participate_event_edit', {'id': participate_event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('participate_event_new') }}">Create new</a>
+{% endblock %}

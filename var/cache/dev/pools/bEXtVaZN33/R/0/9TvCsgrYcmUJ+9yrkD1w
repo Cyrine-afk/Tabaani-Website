@@ -1,0 +1,3 @@
+<?php //App%255CController%255CFront_Office%255CHomeController
+
+return [PHP_INT_MAX, []];

@@ -1,0 +1,25 @@
+{% extends'Front_Office/Header-Footer.html.twig' %}
+
+ {% block title %}
+     Edit Event
+ {% endblock %}
+
+
+    {% block Content %}
+
+        <section class="py-5">
+            <div class="container">
+                <p class="subtitle text-primary">Edit your event {{ event.org }}!</p>
+                <h1 class="h2 mb-5"> Editing a hosted event <span class="text-muted float-right">Let's go!</span>      </h1>
+
+                {{ include('events/_form.html.twig', {'button_label': 'Update'}) }}
+
+                <div class="col text-center text-sm-left"><a class="btn btn-link text-muted" href="{{ path('events_index') }}">
+                        <i class="fa-chevron-left fa mr-2"></i> Cancel
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+{% endblock %}

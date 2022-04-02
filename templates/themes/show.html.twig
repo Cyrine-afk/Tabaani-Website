@@ -1,0 +1,33 @@
+{% extends'Front_Office/Header-Footer.html.twig' %}
+
+ {% block title %}
+     Themes Details
+ {% endblock %}
+
+
+    {% block Content %}
+    <h1>Themes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ theme.id }}</td>
+            </tr>
+            <tr>
+                <th>Themename</th>
+                <td>{{ theme.themename }}</td>
+            </tr>
+            <tr>
+                <th>Imagetheme</th>
+                <td>{{ theme.imagetheme }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('themes_index') }}">back to list</a>
+
+    <a href="{{ path('themes_edit', {'id': theme.id}) }}">edit</a>
+
+    {{ include('themes/_delete_form.html.twig') }}
+{% endblock %}

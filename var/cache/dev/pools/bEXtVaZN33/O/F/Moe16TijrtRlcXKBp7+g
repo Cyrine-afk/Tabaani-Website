@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CEvents%2523setNbrmaxpart
+
+return [PHP_INT_MAX, []];

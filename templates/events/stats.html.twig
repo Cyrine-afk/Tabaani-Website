@@ -1,0 +1,35 @@
+{% extends'Back_Office/AdminMain.html.twig' %}
+ {% block title %}
+     Event Details
+ {% endblock %}
+
+
+    {% block Entry %}
+        <br> <br> <br> <br>
+        <div class="container">
+
+        <h1> Stats Event </h1>
+        <canvas id="categories" width="400" height="100"></canvas>
+
+
+            <script>
+                let categories = document.querySelector("#categories")
+                let categGraph = new Chart(categories, {
+                    type: "pie",
+                    data: {
+                        labels: {{ themesNom|raw }},
+                        datasets: [{
+                            label: "Events By Themes",
+                            data: {{ themesCount|raw }}/*,
+                            backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                            ]*/
+                        }]
+                    }
+                })
+            </script>
+
+        </div>
+    {% endblock %}

@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>{{ form_label(form.themename, "Theme Name") }}</td>
+        <td>{{ form_widget(form.themename) }}</td>
+        <td>{{ form_errors(form.themename) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.imagetheme, "Theme Image") }}</td>
+        <td>{{ form_widget(form.imagetheme) }}</td>
+        <td>{{ form_errors(form.imagetheme) }}</td>
+    </tr>
+</table>
+{{ form_widget(form) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
